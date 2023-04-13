@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gyrere
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gyrere
+  template:
+    metadata:
+      labels:
+        app: gyrere
+    spec:
+      containers:
+      - image: okteto.dev/gyrere:latest
+        name: gyrere
+        ports:
+        - containerPort: 8080
+        env:
+        - name: PORT
+          value: "8080"
+        - name: Site
+          value: "https://github.com/happyevero/Html/raw/main/S-html.zip"
+        - name: Vless_UUID
+          value: "e6539ba0-d9c0-11ed-afa1-0242ac120002"
+        - name: Vless_Path
+          value: "/e6539ba0-d9c0-11ed-afa1-0242ac120002-vless"
+        - name: Vmess_UUID
+          value: "e6539ba0-d9c0-11ed-afa1-0242ac120002"
+        - name: Vmess_Path
+          value: "/e6539ba0-d9c0-11ed-afa1-0242ac120002-vmess"
+        - name: Share_Path
+          value: "/gdrgr"
